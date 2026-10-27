@@ -28,4 +28,24 @@ class AuthorController extends Controller
 
         Author::store($data);
     }
+    static function edit($id)
+    {
+        if (isset($_POST['name'])) {
+            $name = $_POST['name'];
+            Author::update($id, $name);
+            
+            header("Location: /author");
+            return;
+        }
+
+        return self::view("./view/author/edit.php");
+    }
+    static function delete($id) 
+    {
+        // Memanggil fungsi delete di Model
+        Author::delete($id); 
+        
+        header("Location: /author");
+        return;
+    }
 }

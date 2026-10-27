@@ -4,7 +4,7 @@ require_once "./config/database.php";
 
 class Author
 {
-    private $id, $name; 
+    private $id, $nama; 
 
     public function getId()
     {
@@ -13,7 +13,7 @@ class Author
 
     public function getName()
     {
-        return $this->name;
+        return $this->nama;
     }
 
     public static function all()
@@ -30,7 +30,7 @@ class Author
         try{
            global $pdo;
 
-           $query = "INSERT INTO authors (name) VALUES (:name)";
+           $query = "INSERT INTO authors (nama) VALUES ('$name')";
         
            $pdo->exec($query);
 
@@ -42,6 +42,24 @@ class Author
             echo $query . "<br>" . $ex->getMessage();  
         }
     } 
+    public static function update($id, $name)
+    {
+        global $pdo;
+        
+        // Query untuk mengubah data
+        $query = "UPDATE authors SET nama = '$name' WHERE id = '$id'";
+        
+        $pdo->exec($query);
+    }
+    public static function delete($id)
+    {
+        global $pdo;
+        
+        // Query SQL untuk menghapus data berdasarkan ID
+        $query = "DELETE FROM authors WHERE id = '$id'";
+        
+        $pdo->exec($query);
+    }
              
 }
 

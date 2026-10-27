@@ -1,10 +1,18 @@
 <?php
 
-require './controller/HomeController.php';
-require './controller/BookController.php';
-require './controller/AuthorController.php';
+require_once './controller/HomeController.php';
+require_once './controller/BookController.php';
+require_once './controller/AuthorController.php';
 
 $server = $_SERVER["REQUEST_URI"];
+
+if (preg_match('#^/author/([0-9]+)/edit$#', $server, $matches)) {
+    return AuthorController::edit($matches[1]);
+}
+
+if (preg_match('#^/author/([0-9]+)/delete$#', $server, $matches)) {
+    return AuthorController::delete($matches[1]); 
+}
 
 switch($server) {
     case $server == "/":

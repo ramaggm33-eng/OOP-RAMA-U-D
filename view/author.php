@@ -39,10 +39,10 @@ $no =1;
                                     <td><?= $no++ ?></td>
                                     <td><?= $author->getName() ?></td>
                                     <td>
-                                        <a class="bg-warning p-2 btn btn-rounded text-alight" href="/author/ <?= $author->getId() ?>/edit">
+                                        <a class="bg-warning p-2 btn btn-rounded text-alight" href="/author/<?= $author->getId() ?>/edit">
                                             update
                                         </a>
-                                        <a class="bg-warning p-2 btn btn-rounded text-alight" href="/author <?= $author->getId() ?>/delete">
+                                        <a class="bg-warning p-2 btn btn-rounded text-alight" href="/author/<?= $author->getId() ?>/delete">
                                             Delete
                                         </a>
                                     </td>
